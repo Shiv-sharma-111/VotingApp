@@ -10,32 +10,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    private EditText edt_name;
-    private Button btn_submit;
-    private TextView tv_result;
+    TextView hardikText;
+    TextView yurajText;
+    Button  hardikButton;
+    Button yurajButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edt_name = findViewById(R.id.edt_name);
-        btn_submit = findViewById(R.id.btn_submit);
-        tv_result = findViewById(R.id.tv_result);
+        hardikText = findViewById(R.id.tv_hardik_count);
+        yurajText = findViewById(R.id.tv_yuraj_count);
+        hardikButton = findViewById(R.id.btn_hardik_vote);
+        yurajButton = findViewById(R.id.btn_yuraj_vote);
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onSubmitted();
-            }
-        });
+
+
 
     }
-    public void onSubmitted(){
-        String name = edt_name.getText().toString().trim();
-        if(!name.isEmpty()){
-            tv_result.setText(name);
-        }
+    public void onHardikClicked(View v)
+    {
+        String hardikCount = hardikText.getText().toString().trim();
+        int count = Integer.parseInt(hardikCount);
+        count++;
+        hardikText.setText(String.valueOf(count));
+    }
+    public void onYurajClicked(View v)
+    {
+        String yurajCount = yurajText.getText().toString().trim();
+        int count = Integer.parseInt(yurajCount);
+        count++;
+        yurajText.setText(String.valueOf(count));
     }
 }
